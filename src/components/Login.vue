@@ -6,22 +6,23 @@
         ref="loginFormRef"
         label-width="80px"
         :model="loginForm"
-        :rule="login_rules"
-        v-if="islogin"
+        :rules="login_rules"
+        v-show="islogin"
         key="login_form"
         v-loading="isloading"
         element-loading-background="rgba(0, 0, 0, 0.01)"
       >
-    <img src="../assets/picture/light.png" alt="" class="logo" />
+        <img src="../assets/picture/light.png" alt="" class="logo" />
 
-<h1>Yang-admin-system</h1>
+        <h1 class="gradient-text">Yang-admin-system</h1>
 
         <div class="info">
           Yang-admin-system是基于Vue3.2x+Vite2.x+Typescript+Axios+Element
           Plus+Pinia+Vue-router4.x+Vueuse搭建的后台管理系统
         </div>
-        <el-form-item label="用户名" prop="username">
+        <el-form-item label="用户名" prop="username" v-if="islogin">
           <el-input
+            ref="loginForm_username"
             placeholder="请输入用户名"
             v-model="loginForm.username"
             autocomplete="off"
@@ -29,8 +30,9 @@
             key="login_name"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item label="密码" prop="password" v-if="islogin">
           <el-input
+            ref="loginForm_password"
             placeholder="请输入密码"
             show-password
             v-model="loginForm.password"
@@ -44,35 +46,33 @@
         ref="registerFormRef"
         label-width="80px"
         :model="registerForm"
-        :rule="register_rules"
-        v-if="!islogin"
+        :rules="register_rules"
+        v-show="!islogin"
         key="register_form"
         v-loading="isloading"
         element-loading-background="rgba(0, 0, 0, 0.01)"
       >
-    <img src="../assets/picture/light.png" alt="" class="logo" />
-    
-        <h1>账号注册</h1>
-                <div class="info">
-         如发现任何bug，请联系菜鸟作者Yang
-        </div>
-        <div class="info">
-          QQ:2365539910
-          Wechat:hexiaoyangQAQ
-        </div>
-        <el-form-item label="用户名" prop="username">
+        <img src="../assets/picture/light.png" alt="" class="logo" />
+
+        <h1 class="gradient-text">账号注册</h1>
+        <div class="info">如发现任何bug，请联系菜鸟作者Yang</div>
+        <div class="info">QQ:2365539910 Wechat:hexiaoyangQAQ</div>
+        <el-form-item label="用户名" prop="username" v-if="!islogin">
           <el-input
+            ref="register_username"
             placeholder="请输入您的学号"
             v-model="registerForm.username"
             v-if="!islogin"
             key="register_name"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item label="密码" prop="password" v-if="!islogin">
           <el-input
+            ref="register_password"
             placeholder="请自定义密码"
             show-password
             v-model="registerForm.password"
+            v-if="!islogin"
             key="register_password"
           ></el-input>
         </el-form-item>
@@ -97,12 +97,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref, reactive } from "vue";
+import { ref, Ref, reactive, onMounted } from "vue";
 import { ElForm, ElMessage } from "element-plus";
 import router from "../router";
 import { postrequest } from "../network/login/login";
 import { useStore } from "../store";
-let store=useStore()
+let store = useStore();
 let islogin: Ref<boolean> = ref(true);
 let isloading: Ref<boolean> = ref(false);
 let currenttpye: Ref<string> = ref("login");
@@ -171,8 +171,13 @@ const register_rules = reactive({
     },
   ],
 });
+const register_password=ref()
+
 const submitLoginForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
   if (currenttpye.value == "register") {
+loginForm.username=''
+loginForm.password=''
+
     islogin.value = !islogin.value;
     currenttpye.value = "login";
   } else {
@@ -185,9 +190,12 @@ const submitLoginForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
           password: loginForm.password,
         }).then((res) => {
           if (res) {
-            if (window.localStorage.getItem("token") == "null") {
+            
+            
+            if ( window.localStorage.getItem("token")==null|| window.localStorage.getItem("token") == 'null') {
               window.localStorage.setItem("token", res.data.data.token);
             }
+            
             window.localStorage.setItem("userId", loginForm.username);
             window.localStorage.setItem(
               "tagList",
@@ -213,6 +221,8 @@ const submitRegisterForm = (
   formEl: InstanceType<typeof ElForm> | undefined
 ) => {
   if (currenttpye.value == "login") {
+    registerForm.username=''
+registerForm.password=''
     islogin.value = !islogin.value;
     currenttpye.value = "register";
   } else {
@@ -253,13 +263,14 @@ let enter = function () {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
-
 }
-.logo{
+.logo {
   width: 20%;
   transform: translate(0, -2vh);
 }
@@ -267,10 +278,6 @@ let enter = function () {
   font-size: 10px;
   color: rgba(158, 154, 154, 0.911);
   transform: translate(0, -1.5vh);
-}
-h1 {
-  font-size:2vw;
-  transform: translate(0, -3vh);
 }
 .login {
   position: absolute;
@@ -339,5 +346,79 @@ h1 {
 .registerbtn :deep(span) {
   position: absolute;
   transform: translate(0px, 0px);
+}
+
+/* h1 css 样式 */
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fbf8f1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2vw;
+  transform: translate(0, -3vh);
+}
+
+.gradient-text {
+  color: transparent;
+  background: conic-gradient(
+    #d9d7f1 12%,
+    #baabda 12%,
+    #baabda 33%,
+    #e7fbbe 33%,
+    #e7fbbe 55%,
+    #ffcbcb 55%,
+    #ffcbcb 70%,
+    #b5deff 70%,
+    #b5deff 87%,
+    #f7d1ba 87%
+  );
+  background-size: 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  animation: expand-rev 0.5s ease forwards;
+
+  cursor: pointer;
+}
+
+.gradient-text:hover {
+  animation: expand 0.5s ease forwards;
+}
+
+@keyframes expand {
+  0% {
+    background-size: 50%;
+    background-position: 0 0;
+  }
+  20% {
+    background-size: 55%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 325%;
+    background-position: -10em -4em;
+  }
+}
+
+@keyframes expand-rev {
+  0% {
+    background-size: 325%;
+    background-position: -10em -4em;
+  }
+  20% {
+    background-size: 55%;
+    background-position: 0 1em;
+  }
+  100% {
+    background-size: 50%;
+    background-position: 0 0;
+  }
 }
 </style>

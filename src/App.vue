@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import Theme from "./components/common/Theme.vue";
-
-
+//初始化token为null
+new Promise((resolve,reject)=>{
+  resolve('3')
+}).then((res)=>{
+  console.log(res);
+  
+})
 </script>
 
 <template>

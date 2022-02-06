@@ -6,6 +6,7 @@
     </el-aside>
     <el-container>
       <el-header>
+        <hello></hello>
         <el-tooltip
           class="box-item"
           effect="dark"

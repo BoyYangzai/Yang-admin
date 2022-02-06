@@ -7,12 +7,24 @@ interface postBody {
   studentId: string;
   password: string;
 }
+interface patchBody {
+  Nickname?: string;
+  Avatar?: string;
+  Sex?: string;
+  Description?: string;
+  Background?: string;
+}
 export function getrequest(param: string) {
   return request.get(param);
 }
 export function postrequest(param: string, body: postBody) {
   return request.post(param, body);
 }
+
+export function patchrequest(param: string, body: patchBody) {
+  return request.patch(param, body);
+}
+
 request.interceptors.request.use((config) => {
   if (window.localStorage.getItem("token") != "null") {
     config!.headers!.Authorization = `Bearer ${window.localStorage.getItem(
@@ -25,12 +37,12 @@ request.interceptors.response.use(
   (res) => {
     if (res.status == 200) {
       if (res.data.code == 200) {
-        if (res.data.data.userInfo) {
+        if (res.data.data?.token) {
+                  ElMessage.success({
+                    message: `登录成功`,
+                    center: true,
+                  });
         } else {
-          ElMessage.success({
-            message: `登录成功`,
-            center: true,
-          });
         }
         return res;
       } else if (res.data.code == 1003) {

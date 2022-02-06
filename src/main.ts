@@ -11,11 +11,17 @@ let store = useStore();
 router.beforeEach((to, from, next) => {
   store.tagList = JSON.parse(window.localStorage.getItem("tagList") as string); //pinia状态持久化
   if (to.name !== "login") {
-    if (window.localStorage.getItem("token") != "null") {
+    if (window.localStorage.getItem("token") !== null&&window.localStorage.getItem("token") != "null") {
+      
       store.getUserInfo(window.localStorage.getItem("userId") as string);
       next();
-    } else if (window.localStorage.getItem("token") == "null") {
+    } else if (
+      window.localStorage.getItem("token") == null ||
+      window.localStorage.getItem("token") == "null"
+    ) {
       next({ name: "login" });
+      console.log('okoko');
+      
     } else {
       next();
     }

@@ -6,18 +6,22 @@
       </div>
     </template>
     <el-descriptions title="" border>
-      <el-descriptions-item label-align="center" label="学号">
+      <el-descriptions-item label-align="center" label="学号" width="50px"
+      >
         {{ store.userInfo.studentId }}
       </el-descriptions-item>
-      <el-descriptions-item label-align="center" label="性别">{{
+      <el-descriptions-item label-align="center" label="性别" width="50px"
+      >{{
         store.userInfo.sex
       }}</el-descriptions-item>
 
-      <el-descriptions-item label="头像">
+      <el-descriptions-item label="头像" label-align="center"  width="50px"
+      >
         <img
+        class="avatar"
           :src="store.userInfo.avatar"
           alt=""
-          style="width: 10%; display: inline; vertical-align: middle"
+          style="display: inline; vertical-align: middle"
         />
       </el-descriptions-item>
       <el-descriptions-item label-align="center" label="学院"
@@ -26,7 +30,7 @@
       <el-descriptions-item label-align="center" label="专业"
         >数据科学与大数据技术</el-descriptions-item
       >
-      <el-descriptions-item label="排名">NO.1</el-descriptions-item>
+      <el-descriptions-item label="排名" label-align="center">NO.1</el-descriptions-item>
 
       <el-descriptions-item label="技术栈" label-align="center">
         <el-tag
@@ -264,5 +268,8 @@ height: 100%;
   width: 80%;
   height: 50vh;
   margin-top: 5vh;
+}
+.avatar{
+  width: 5vw;
 }
 </style>

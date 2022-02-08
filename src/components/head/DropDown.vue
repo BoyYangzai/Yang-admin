@@ -18,17 +18,17 @@
                 </el-form-item>
               </el-form>
               <el-button size="small" type="text" @click="visible = false"
-                >cancel</el-button
+                >取消</el-button
               >
               <el-button
                 size="small"
                 type="primary"
                 @click="changeAvatar(qqFormRef)"
-                >confirm</el-button
+                >更换</el-button
               >
             </div>
             <template #reference>
-              <div  style="width: 100%;">更换头像</div>
+              <div style="width: 100%">更换头像</div>
             </template>
           </el-popover></el-dropdown-item
         >
@@ -50,14 +50,13 @@ import { reactive, ref } from "vue";
 import { setAvatar } from "../../network/core/myself";
 //更换头像
 import type { ElForm } from "element-plus";
-
 type FormInstance = InstanceType<typeof ElForm>;
 const visible = ref(false);
-
 const qqFormRef = ref<FormInstance>();
 const qqForm = reactive({
   QQ: "",
 });
+
 const qqRule = reactive({
   QQ: [
     {
@@ -73,13 +72,14 @@ const qqRule = reactive({
     },
   ],
 });
+
 const changeAvatar = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.validate((valid) => {
     if (valid) {
       setAvatar(qqForm.QQ);
       visible.value = false;
-      qqForm.QQ=''
+      qqForm.QQ = "";
       setTimeout(() => {
         store.getUserInfo(window.localStorage.getItem("userId") as string);
       }, 100);
@@ -93,6 +93,7 @@ const changeAvatar = (formEl: FormInstance | undefined) => {
 let store = useStore();
 const handleCommand = (command: string | number | object) => {
   if (command == "exit") {
+    ElMessage.closeAll();
     ElMessageBox.confirm(
       '<span style="font-size:1vw;font-weight:700">请确认是否     <span style="color:orange;font-weight:1000;font-size:1.3vw">退出</span></span>',
       "谨慎操作",
@@ -109,6 +110,7 @@ const handleCommand = (command: string | number | object) => {
         window.localStorage.setItem("userId", "null");
         window.localStorage.setItem("tagList", "[]");
         router.replace("/");
+        ElMessage.closeAll();
         ElMessage({
           type: "success",
           message: "退出成功",
@@ -116,6 +118,7 @@ const handleCommand = (command: string | number | object) => {
         });
       })
       .catch(() => {
+        ElMessage.closeAll();
         ElMessage({
           type: "info",
           message: "已取消",

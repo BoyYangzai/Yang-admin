@@ -56,12 +56,77 @@ const routes: RouteRecordRaw[] = [
           icon: "fa fa-user-o",
         },
       },
+
+      {
+        path: "/test3",
+        name: "没想好三",
+        component: () => import("../components/main/test3.vue"),
+        meta: {
+          icon: "fa fa-hourglass-start",
+        },
+      },
+      {
+        path: "/test4",
+        name: "没想好四",
+        component: () => import("../components/main/test4.vue"),
+        meta: {
+          icon: "fa fa-folder ",
+        },
+      },
+    ],
+  },
+  {
+    path: "/classinfo",
+    name: "班级信息",
+    component: () => import("../components/Core.vue"),
+    meta: {
+      icon: "fa fa-address-book",
+      hidden: false,
+    },
+    redirect: "/test1",
+    children: [
       {
         path: "/class",
         name: "班级信息",
         component: () => import("../components/main/Class.vue"),
         meta: {
           icon: "fa fa-graduation-cap",
+        },
+      },
+      {
+        path: "/test5",
+        name: "没想好五",
+        component: () => import("../components/main/test5.vue"),
+        meta: {
+          icon: "fa fa-handshake-o",
+        },
+      },
+    ],
+  },
+  {
+    path: "/gradeinfo",
+    name: "年级信息",
+    component: () => import("../components/Core.vue"),
+    meta: {
+      icon: "fa fa-university",
+      hidden: false,
+    },
+    redirect: "/test1",
+    children: [
+      {
+        path: "/test1",
+        name: "没想好一",
+        component: () => import("../components/main/test1.vue"),
+        meta: {
+          icon: "fa fa-users",
+        },
+      },
+      {
+        path: "/test2",
+        name: "没想好二",
+        component: () => import("../components/main/test2.vue"),
+        meta: {
+          icon: "fa fa-lightbulb-o fa-lg",
         },
       },
     ],

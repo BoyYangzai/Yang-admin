@@ -46,7 +46,7 @@ let changeThemePicture = function () {
 let changeTheme = function () {
   console.log(nowtheme.value);
   toggleDark();
-
+ElMessage.closeAll()
   ElMessage.success("切换主题成功");
   changeThemePicture();
 };

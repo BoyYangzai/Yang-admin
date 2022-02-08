@@ -6,19 +6,16 @@
       </div>
     </template>
     <el-descriptions title="" border>
-      <el-descriptions-item label-align="center" label="学号" width="50px"
-      >
+      <el-descriptions-item label-align="center" label="学号" width="50px">
         {{ store.userInfo.studentId }}
       </el-descriptions-item>
-      <el-descriptions-item label-align="center" label="性别" width="50px"
-      >{{
+      <el-descriptions-item label-align="center" label="性别" width="50px">{{
         store.userInfo.sex
       }}</el-descriptions-item>
 
-      <el-descriptions-item label="头像" label-align="center"  width="50px"
-      >
+      <el-descriptions-item label="头像" label-align="center" width="50px">
         <img
-        class="avatar"
+          class="avatar"
           :src="store.userInfo.avatar"
           alt=""
           style="display: inline; vertical-align: middle"
@@ -30,7 +27,9 @@
       <el-descriptions-item label-align="center" label="专业"
         >数据科学与大数据技术</el-descriptions-item
       >
-      <el-descriptions-item label="排名" label-align="center">NO.1</el-descriptions-item>
+      <el-descriptions-item label="排名" label-align="center"
+        >NO.1</el-descriptions-item
+      >
 
       <el-descriptions-item label="技术栈" label-align="center">
         <el-tag
@@ -250,26 +249,25 @@ onMounted(() => {
   font-weight: 700;
   font-family: "黑体", Times, serif;
 }
-:deep(.el-card__body){
-height: 100%;
+:deep(.el-card__body) {
+  height: 100%;
 }
 .text {
   font-size: 14px;
 }
 
-
 .box-card {
   width: 97%;
   height: 94.3%;
   margin-left: 0.5vw;
-
 }
+
 .leida {
   width: 80%;
   height: 50vh;
   margin-top: 5vh;
 }
-.avatar{
+.avatar {
   width: 5vw;
 }
 </style>

@@ -10,6 +10,7 @@
       height="250"
       style="width: 100vw; height: 85vh"
       lazy
+      class="table"
       ref="table"
     >
       <el-table-column prop="studentId" label="学号" width="90" />
@@ -44,6 +45,7 @@
     </el-table>
 
     <el-pagination
+      ref="page"
       :page-size="pagesize"
       :pager-count="11"
       :currentpage="currentpage"
@@ -1346,7 +1348,8 @@ let tableData: any = reactive([
 
 let pagesize = ref(18);
 let currentpage = ref(1);
-let currentChange = function (newPage: number) {
+let table = ref();
+const currentChange = function (newPage: number) {
   nextTick(() => {
     currentpage.value = newPage;
   });
@@ -1471,6 +1474,7 @@ const changeRow = (formEl: InstanceType<typeof ElForm> | undefined) => {
 };
 // 删除学生信息模块
 const deleteRow = (index: number) => {
+  ElMessage.closeAll();
   ElMessageBox.confirm(
     `请确认是否删除学生 <strong>${tableData[index].name}</strong> 的相关信息`,
     "警告",
@@ -1484,12 +1488,14 @@ const deleteRow = (index: number) => {
   )
     .then(() => {
       tableData.splice(index, 1);
+      ElMessage.closeAll();
       ElMessage({
         type: "success",
         message: "删除成功",
       });
     })
     .catch(() => {
+      ElMessage.closeAll();
       ElMessage({
         type: "info",
         message: "已取消",
@@ -1503,6 +1509,5 @@ const deleteRow = (index: number) => {
   width: 97%;
   margin-left: 0.5vw;
 
-  height: 95%;
 }
 </style>

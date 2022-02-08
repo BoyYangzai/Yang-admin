@@ -38,26 +38,30 @@ request.interceptors.response.use(
     if (res.status == 200) {
       if (res.data.code == 200) {
         if (res.data.data?.token) {
-                  ElMessage.success({
-                    message: `登录成功`,
-                    center: true,
-                  });
+          ElMessage.closeAll();
+          ElMessage.success({
+            message: `登录成功`,
+            center: true,
+          });
         } else {
         }
         return res;
       } else if (res.data.code == 1003) {
+        ElMessage.closeAll();
         ElMessage.error({
           message: res.data.message,
           center: true,
         });
         return;
       } else if (res.data.code == 1002) {
+        ElMessage.closeAll();
         ElMessage({
           message: res.data.message,
           center: true,
         });
         return;
       } else if (res.data.code == 1001) {
+        ElMessage.closeAll();
         ElMessage({
           message: res.data.message,
           center: true,
@@ -65,7 +69,7 @@ request.interceptors.response.use(
         return;
       }
     } else {
-      console.log("error");
+      ElMessage.closeAll();
       ElMessage.error({
         message: res.data.message,
         center: true,
@@ -73,6 +77,7 @@ request.interceptors.response.use(
     }
   },
   (err: any) => {
+    ElMessage.closeAll();
     ElMessage.error({
       message: "请检查网络设置",
       center: true,

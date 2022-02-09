@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import Theme from "./components/common/Theme.vue";
-let str="NI hAO a 我叫yANG QAQ"
-let res =str.split('')
-let a=res.map(item=>{
-	return item.toUpperCase() == item?item.toLowerCase() : item.toUpperCase()
-}).join('')
-
-console.log(res)
-console.log(a);
+import { onMounted } from "vue";
 
 </script>
-
 <template>
   <theme></theme>
   <router-view> </router-view>
 </template>
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -40,5 +32,15 @@ console.log(a);
 .box-card {
   width: 97%;
   margin-left: 0.5vw;
+  height: 95%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1vw;
+  font-weight: 700;
+  font-family: "黑体", Times, serif;
 }
 </style>

@@ -44,11 +44,6 @@ let isFullscreenChinses = computed(() => {
     return "取消全屏";
   }
 });
-let store = useStore();
-
-let l = function () {
-  console.log(router.currentRoute);
-};
 </script>
 
 <style lang="less" scoped>

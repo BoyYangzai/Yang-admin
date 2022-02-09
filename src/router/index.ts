@@ -87,7 +87,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: "/class",
-        name: "班级信息",
+        name: "我的班级",
         component: () => import("../components/main/Class.vue"),
         meta: {
           icon: "fa fa-graduation-cap",
@@ -111,22 +111,22 @@ const routes: RouteRecordRaw[] = [
       icon: "fa fa-university",
       hidden: false,
     },
-    redirect: "/test1",
+    redirect: "/infoconrtol",
     children: [
+      {
+        path: "/infocontrol",
+        name: "信息管理",
+        component: () => import("../components/main/InfoControl.vue"),
+        meta: {
+          icon: "fa fa-file-text",
+        },
+      },
       {
         path: "/test1",
         name: "没想好一",
         component: () => import("../components/main/test1.vue"),
         meta: {
           icon: "fa fa-users",
-        },
-      },
-      {
-        path: "/test2",
-        name: "没想好二",
-        component: () => import("../components/main/test2.vue"),
-        meta: {
-          icon: "fa fa-lightbulb-o fa-lg",
         },
       },
     ],
@@ -141,11 +141,11 @@ const routes: RouteRecordRaw[] = [
     },
     children: [
       {
-        path: "/infocontrol",
-        name: "信息管理",
-        component: () => import("../components/main/InfoControl.vue"),
+        path: "/echarts",
+        name: "自定义图表",
+        component: () => import("../components/main/Echarts.vue"),
         meta: {
-          icon: "fa fa-file-text",
+          icon: "fa fa-line-chart",
         },
       },
     ],

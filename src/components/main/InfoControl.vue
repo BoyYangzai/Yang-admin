@@ -1,5 +1,6 @@
 <template>
   <div class="info_control">
+    <el-config-provider :locale="locale">
     <el-table
       :data="
         filterTableData.slice(
@@ -15,7 +16,11 @@
     >
       <el-table-column prop="studentId" label="学号" width="90" />
       <el-table-column prop="departments" label="学院" width="180" />
-      <el-table-column prop="major" label="专业" width="200" />
+      <el-table-column
+        prop="major"
+        label="专业"
+        width="200"
+      />
       <el-table-column prop="name" label="姓名" width="100" />
       <el-table-column prop="phone" label="手机号" />
 
@@ -43,6 +48,7 @@
         </template></el-table-column
       >
     </el-table>
+    </el-config-provider>
 
     <el-pagination
       ref="page"
@@ -50,7 +56,7 @@
       :pager-count="11"
       :currentpage="currentpage"
       layout="prev, pager, next"
-      :total="tableData.length"
+      :total="filterTableData.length"
       @current-change="currentChange"
     >
     </el-pagination>
@@ -94,6 +100,7 @@
 import { Upload } from "@element-plus/icons-vue";
 import axios from "axios";
 import { ElForm, ElMessage, ElMessageBox } from "element-plus";
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import { computed, nextTick, onMounted, reactive, Ref, ref } from "vue";
 let tableData: any = reactive([
   {
@@ -1345,7 +1352,7 @@ let tableData: any = reactive([
     phone: "18647187114",
   },
 ]);
-
+let locale=zhCn
 let pagesize = ref(18);
 let currentpage = ref(1);
 let table = ref();
@@ -1467,7 +1474,6 @@ const changeRow = (formEl: InstanceType<typeof ElForm> | undefined) => {
 
       dialogTableVisible.value = false;
     } else {
-      console.log("error submit!");
       return false;
     }
   });
@@ -1502,12 +1508,14 @@ const deleteRow = (index: number) => {
       });
     });
 };
-</script>
+
+
+  
+  </script>
 <style lang="less" scoped>
 .info_control {
   margin-top: 1.5vh;
   width: 97%;
   margin-left: 0.5vw;
-
 }
 </style>

@@ -20,8 +20,6 @@ router.beforeEach((to, from, next) => {
       window.localStorage.getItem("token") == "null"
     ) {
       next({ name: "login" });
-      console.log('okoko');
-      
     } else {
       next();
     }

@@ -74,7 +74,6 @@ import { nextTick, ref } from "vue";
 import type { ElTable } from "element-plus";
 import axios from "axios";
 let value = ref(5);
-console.log(value.value);
 interface User {
   studentId: string;
   name: string;

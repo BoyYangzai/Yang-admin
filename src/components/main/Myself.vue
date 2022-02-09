@@ -106,7 +106,6 @@ const handleInputConfirm = () => {
 
 onMounted(() => {
   document.querySelector(".leida")?.removeAttribute("_echarts_instance_");
-
   var myChart4 = echarts.init(document.querySelector(".leida") as HTMLElement);
   // 绘制图表
   let option4 = {
@@ -158,7 +157,7 @@ onMounted(() => {
           { text: "英语", max: 100 },
           { text: "体育", max: 100 },
           { text: "思修", max: 100 },
-          { text: "专业技能", max: 72 },
+          { text: "专业技能", max: 80 },
         ],
         center: ["75%", "50%"],
         radius: 120,
@@ -241,14 +240,7 @@ onMounted(() => {
 });
 </script>
 <style scoped lang="less">
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1vw;
-  font-weight: 700;
-  font-family: "黑体", Times, serif;
-}
+
 :deep(.el-card__body) {
   height: 100%;
 }

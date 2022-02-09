@@ -14,7 +14,10 @@
             <div style="text-align: right; margin: 0">
               <el-form ref="qqFormRef" :rules="qqRule" :model="qqForm">
                 <el-form-item label="" prop="QQ">
-                  <el-input v-model="qqForm.QQ"></el-input>
+                  <el-input
+                    v-model="qqForm.QQ"
+                    @keyup.enter="changeAvatar(qqFormRef)"
+                  ></el-input>
                 </el-form-item>
               </el-form>
               <el-button size="small" type="text" @click="visible = false"
@@ -95,7 +98,7 @@ const handleCommand = (command: string | number | object) => {
   if (command == "exit") {
     ElMessage.closeAll();
     ElMessageBox.confirm(
-      '<span style="font-size:1vw;font-weight:700">请确认是否     <span style="color:orange;font-weight:1000;font-size:1.3vw">退出</span></span>',
+      '<span style="font-size:1vw;font-weight:700; ">请确认是否     <span style="color:orange;font-weight:1000;font-size:1.3vw;">退出</span></span>',
       "谨慎操作",
       {
         confirmButtonText: "确认退出",

@@ -91,13 +91,10 @@ import { Menu as IconMenu, Setting } from "@element-plus/icons-vue";
 import router from "../../router";
 let a = "fa-spin";
 const isCollapse = ref(false);
-console.log(router.currentRoute.value);
 
 const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
 };
 </script>
 

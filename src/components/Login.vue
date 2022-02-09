@@ -211,7 +211,6 @@ loginForm.password=''
           isloading.value = false;
         });
       } else {
-        console.log("error submit!");
         return false;
       }
     });
@@ -242,11 +241,9 @@ registerForm.password=''
             isloading.value = false;
           })
           .catch(() => {
-            console.log("erro");
             isloading.value = false;
           });
       } else {
-        console.log("error submit!");
         return false;
       }
     });

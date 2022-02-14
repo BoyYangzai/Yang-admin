@@ -79,18 +79,18 @@
       </el-form>
 
       <transition name="login">
-        <el-button
-          size="default"
+        <button
           @click="submitLoginForm(loginFormRef)"
           :class="{ loginbtn: islogin, registerbtn: !islogin }"
-          >登录</el-button
+        class="custom-btn"
+          >登录</button
         >
       </transition>
-      <el-button
-        size="default"
+      <button
         :class="{ loginbtn: !islogin, registerbtn: islogin }"
+        class="custom-btn"
         @click="submitRegisterForm(registerFormRef)"
-        >注册</el-button
+        >注册</button
       >
     </div>
   </div>
@@ -320,20 +320,99 @@ let enter = function () {
   height: 100vh;
 }
 
+/* btn */
+.custom-btn {
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.loginbtn {
+  background-color: #89d8d3;
+background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+  border: none;
+  z-index: 1;
+}
+.loginbtn:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+   background-color: #4dccc6;
+background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.loginbtn:hover {
+  color: #fff;
+}
+.loginbtn:hover:after {
+  top: 0;
+  height: 100%;
+}
+
+
 .loginbtn {
   position: absolute;
   top: 50%;
   left: 50%;
-  height: 36px;
+  width: 120px;
+  height: 40px;
   transform: translate(-50%, 345%);
   transition: all 1.5s;
 }
+
+
+.registerbtn {
+  border: none;
+  color: #000;
+}
+.registerbtn:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.registerbtn:hover {
+  color: #000;
+}
+.registerbtn:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+
+
 .registerbtn {
   top: 50%;
   left: 50%;
   transform: translate(130%, 385%);
-  width: 60px;
-  height: 33px;
+  width: 65px;
+  height: 36px;
   font-size: 7px;
   text-align: center;
   line-height: 23px;
@@ -344,7 +423,6 @@ let enter = function () {
   position: absolute;
   transform: translate(0px, 0px);
 }
-
 /* h1 css 样式 */
 body {
   height: 100vh;

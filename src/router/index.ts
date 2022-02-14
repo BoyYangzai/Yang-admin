@@ -137,9 +137,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../components/Core.vue"),
     meta: {
       icon: "fa fa-cog  fa-spin",
-      hidden: false,
     },
     children: [
+      {
+        path: "/404show",
+        name: "404页面",
+        component: () => import("../components/main/tool/pages/404show.vue"),
+        meta: {
+          icon: "fa fa-exclamation-circle fa-lg",
+        },
+      },
       {
         path: "/echarts",
         name: "自定义图表",
@@ -149,6 +156,21 @@ const routes: RouteRecordRaw[] = [
         },
       },
     ],
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("../components/404.vue"),
+    meta: {
+      hidden: true,
+    },
+  },
+  {
+    path: "/:pathMatch(.*)",
+    redirect: "/404",
+    meta: {
+      hidden: true,
+    },
   },
 ];
 

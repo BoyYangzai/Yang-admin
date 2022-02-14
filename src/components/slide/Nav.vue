@@ -10,7 +10,7 @@
     <el-breadcrumb separator="" v-if="router.currentRoute.value.name == '首页'">
       <el-breadcrumb-item
         ><a
-          :href="router.currentRoute.value.matched[1].path"
+          href="/core"
           style="font-size: 27px"
           >首页</a
         ></el-breadcrumb-item
@@ -23,7 +23,7 @@
       v-if="router.currentRoute.value.name != '首页'"
     >
       <el-breadcrumb-item
-        :to="{ path: router.currentRoute.value.matched[0].path }"
+        to="/core"
         >首页</el-breadcrumb-item
       >
       <el-breadcrumb-item

@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import axios from "axios";
 import { onMounted } from "vue";
 
 </script>
 <template>
+
   <theme></theme>
   <router-view> </router-view>
 </template>

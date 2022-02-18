@@ -140,6 +140,14 @@ const routes: RouteRecordRaw[] = [
     },
     children: [
       {
+        path: "/editor",
+        name: "富文本编辑器",
+        component: () => import("../components/main/tool/pages/Editor.vue"),
+        meta: {
+          icon: "fa fa-text-width",
+        },
+      },
+      {
         path: "/404show",
         name: "404页面",
         component: () => import("../components/main/tool/pages/404show.vue"),
@@ -150,9 +158,17 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/echarts",
         name: "自定义图表",
-        component: () => import("../components/main/Echarts.vue"),
+        component: () => import("../components/main/tool/pages/Echarts.vue"),
         meta: {
           icon: "fa fa-line-chart",
+        },
+      },
+      {
+        path: "/qrcode",
+        name: "自定义二维码",
+        component: () => import("../components/main/tool/pages/Qrcode.vue"),
+        meta: {
+          icon: "fa fa-qrcode fa-lg",
         },
       },
     ],

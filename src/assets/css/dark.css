@@ -1,0 +1,27 @@
+      .dark {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      .dark .loginpage .login {
+        box-shadow: 0px 0px 20px 3px rgba(155, 152, 152, 0.26);
+      }
+      .dark .loginpage .el-form-item__label {
+        color: black;
+      }
+      .dark .loginpage .el-button {
+        background: rgba(15, 59, 192, 0.568);
+      }
+      .dark h1 {
+        color: black;
+      }
+      .dark .loginpage .info {
+        color: rgba(46, 45, 45, 0.911);
+      }
+      .dark .el-card__header {
+        background-color: rgba(246, 246, 246, 0.952);
+      }
+      .dark .el-card__body {
+        background-color: rgb(224, 219, 219);
+      }
+      .dark .house .el-card {
+        --el-card-bg-color: white;
+      }

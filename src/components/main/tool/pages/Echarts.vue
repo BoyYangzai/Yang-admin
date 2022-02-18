@@ -362,7 +362,7 @@ onMounted(() => {
   float: left;
 
   position: relative;
-  bottom: 1.9vh;
+  bottom: 1.5vh;
 }
 .down {
   float: left;

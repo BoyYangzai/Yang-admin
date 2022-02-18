@@ -9,7 +9,7 @@
           )
         "
         height="250"
-        style="width: 100vw; height: 85vh"
+        style="width: 100vw; height: 85vh" 
         lazy
         class="table"
         ref="table"
@@ -1361,7 +1361,7 @@ axios.post("http://124.222.107.29:5000/admin/getall").then((res) => {
 //搜索模块
 const search = ref("");
 const filterTableData = computed(() =>
-  tableData.filter(
+  tableData.filter( 
     (data: any) =>
       !search.value ||
       data.name.toLowerCase().includes(search.value.toLowerCase()) ||

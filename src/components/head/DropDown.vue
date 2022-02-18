@@ -35,8 +35,8 @@
             </template>
           </el-popover></el-dropdown-item
         >
-        <el-dropdown-item>Action 2</el-dropdown-item>
-        <el-dropdown-item>Action 3</el-dropdown-item>
+        <el-dropdown-item @click="goMyself">个人资料</el-dropdown-item>
+        <el-dropdown-item >Action 3</el-dropdown-item>
         <el-dropdown-item divided command="exit">退出账号</el-dropdown-item>
       </el-dropdown-menu>
     </template>
@@ -129,6 +129,11 @@ const handleCommand = (command: string | number | object) => {
       });
   }
 };
+
+//跳转个人资料
+let goMyself=function(){
+  router.push('/myself')
+}
 </script>
 
 <style lang="less" scoped>

@@ -2,7 +2,7 @@
   "name": "control_system",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
     "build": " vite build",
     "preview": "vite preview"
   },
@@ -10,6 +10,8 @@
     "@element-plus/icons-vue": "^0.2.6",
     "@types/axios": "^0.14.0",
     "@vueuse/core": "^7.5.4",
+    "@vueuse/integrations": "^7.6.2",
+    "@wangeditor/editor-for-vue": "^5.1.8-8",
     "axios": "^0.25.0",
     "echarts": "^5.3.0",
     "element": "^0.1.4",
@@ -19,6 +21,7 @@
     "less-loader": "^10.2.0",
     "pinia": "^2.0.9",
     "plus": "^0.1.0",
+    "qrcode": "^1.5.0",
     "sass": "^1.49.7",
     "scss": "^0.2.4",
     "vue": "^3.2.25",

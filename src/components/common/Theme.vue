@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from "@vueuse/core";
 import { ElMessage } from "element-plus";
-import { computed, nextTick, onMounted, Ref, ref } from "vue";
+import { computed,  onMounted, ref } from "vue";
 
 let themepicture = [
   { url: new URL("../../assets/picture/light.png", import.meta.url).href },

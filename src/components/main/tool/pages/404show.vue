@@ -6,11 +6,7 @@
       </div>
     </template>
   <div class="hamburger-menu">
-  <button class="burger" data-state="closed">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+
 </div>
 <nav data-state="closed">
   <ul>
@@ -389,13 +385,6 @@ gsap.to("#glassShine", {
   delay: 2
 });
 
-const burger = document.querySelector('.burger') as HTMLElement
-const nav = document.querySelector('nav')as HTMLElement
-
-burger.addEventListener('click',(e) => {
-  burger.dataset.state === 'closed' ? burger.dataset.state = "open" : burger.dataset.state = "closed"
-  nav.dataset.state === "closed" ? nav.dataset.state = "open" : nav.dataset.state = "closed"
-})
 })
 
 </script>

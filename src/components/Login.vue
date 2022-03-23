@@ -82,16 +82,18 @@
         <button
           @click="submitLoginForm(loginFormRef)"
           :class="{ loginbtn: islogin, registerbtn: !islogin }"
-        class="custom-btn"
-          >登录</button
+          class="custom-btn"
         >
+          登录
+        </button>
       </transition>
       <button
         :class="{ loginbtn: !islogin, registerbtn: islogin }"
         class="custom-btn"
         @click="submitRegisterForm(registerFormRef)"
-        >注册</button
       >
+        注册
+      </button>
     </div>
   </div>
 </template>
@@ -106,7 +108,7 @@ let store = useStore();
 let islogin: Ref<boolean> = ref(true);
 let isloading: Ref<boolean> = ref(false);
 let currenttpye: Ref<string> = ref("login");
-let loginURL = "user/login";
+let loginURL = "login";
 let registerURL = "user/register";
 const formSize = ref("");
 const loginFormRef = ref<InstanceType<typeof ElForm>>();
@@ -171,12 +173,12 @@ const register_rules = reactive({
     },
   ],
 });
-const register_password=ref()
+const register_password = ref();
 
 const submitLoginForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
   if (currenttpye.value == "register") {
-loginForm.username=''
-loginForm.password=''
+    loginForm.username = "";
+    loginForm.password = "";
 
     islogin.value = !islogin.value;
     currenttpye.value = "login";
@@ -189,13 +191,16 @@ loginForm.password=''
           studentId: loginForm.username,
           password: loginForm.password,
         }).then((res) => {
+          console.log(res);
+
           if (res) {
-            
-            
-            if ( window.localStorage.getItem("token")==null|| window.localStorage.getItem("token") == 'null') {
-              window.localStorage.setItem("token", res.data.data.token);
-            }
-            
+            // if (
+            //   window.localStorage.getItem("token") == null ||
+            //   window.localStorage.getItem("token") == "null"
+            // ) {
+            window.localStorage.setItem("token", res.data.data.token);
+            // }
+
             window.localStorage.setItem("userId", loginForm.username);
             window.localStorage.setItem(
               "tagList",
@@ -220,8 +225,8 @@ const submitRegisterForm = (
   formEl: InstanceType<typeof ElForm> | undefined
 ) => {
   if (currenttpye.value == "login") {
-    registerForm.username=''
-registerForm.password=''
+    registerForm.username = "";
+    registerForm.password = "";
     islogin.value = !islogin.value;
     currenttpye.value = "register";
   } else {
@@ -266,6 +271,10 @@ let enter = function () {
   margin: 0;
   padding: 0;
   box-sizing: content-box;
+}
+.loginpage {
+  width: 100vw;
+  height: 100vh;
 }
 .logo {
   width: 20%;
@@ -327,15 +336,14 @@ let enter = function () {
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-block;
-   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-   7px 7px 20px 0px rgba(0,0,0,.1),
-   4px 4px 5px 0px rgba(0,0,0,.1);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
 }
 
 .loginbtn {
   background-color: #89d8d3;
-background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+  background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
   border: none;
   z-index: 1;
 }
@@ -348,13 +356,10 @@ background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
   left: 0;
   z-index: -1;
   border-radius: 5px;
-   background-color: #4dccc6;
-background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
-  box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
+  background-color: #4dccc6;
+  background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
   transition: all 0.3s ease;
 }
 .loginbtn:hover {
@@ -365,7 +370,6 @@ background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
   height: 100%;
 }
 
-
 .loginbtn {
   position: absolute;
   top: 50%;
@@ -375,7 +379,6 @@ background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
   transform: translate(-50%, 345%);
   transition: all 1.5s;
 }
-
 
 .registerbtn {
   border: none;
@@ -390,11 +393,8 @@ background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
   left: 0;
   direction: rtl;
   z-index: -1;
-  box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
   transition: all 0.3s ease;
 }
 .registerbtn:hover {
@@ -405,7 +405,6 @@ background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
   right: 0;
   width: 100%;
 }
-
 
 .registerbtn {
   top: 50%;

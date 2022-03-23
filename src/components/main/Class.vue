@@ -73,6 +73,7 @@
 import { nextTick, ref } from "vue";
 import type { ElTable } from "element-plus";
 import axios from "axios";
+import { getrequest } from "../../network/login/login";
 let value = ref(5);
 interface User {
   studentId: string;
@@ -93,8 +94,8 @@ const handleCurrentChange = (val: User | undefined) => {
 let tableData: any = ref([]);
 
 // 信息存储
-axios.post("http://124.222.107.29:5000/admin/getall").then((res) => {
-  tableData.value = res.data.splice(0, 31);
+getrequest("https://yakui114514.xyz/admin/getall").then((res) => {
+  tableData.value = res.data.data.splice(0, 31);
 });
 </script>
 

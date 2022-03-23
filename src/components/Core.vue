@@ -22,7 +22,9 @@
       </el-header>
       <el-main>
         <tags></tags>
+        <transition >
         <router-view> </router-view>
+        </transition>
       </el-main>
     </el-container>
   </el-container>
@@ -113,5 +115,20 @@ let isFullscreenChinses = computed(() => {
   font-weight: 700;
   color: var(--el-text-color-regular);
   cursor: text;
+}
+
+
+.v-enter-active,
+.v-leave-active {
+  opacity:1;
+
+transition:all  .6s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  transform: translate(-5vw,0);
+  opacity: 0;
+
 }
 </style>

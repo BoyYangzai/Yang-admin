@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { getrequest } from "../network/login/login";
+import { getrequest, postrequest } from "../network/login/login";
 interface tag {
   name: string;
   path: string;
@@ -36,13 +36,13 @@ export const useStore = defineStore("main", {
   getters: {},
   actions: {
     getUserInfo(studentId: string) {
-      getrequest(`user/info/${studentId}`).then((res) => {
-        this.userInfo.studentId = res.data.data.userInfo.studentId;
-        this.userInfo.nickname = res.data.data.userInfo.nickname;
-        this.userInfo.avatar = res.data.data.userInfo.avatar;
-        this.userInfo.sex = res.data.data.userInfo.sex;
-        this.userInfo.description = res.data.data.userInfo.description;
-        this.userInfo.fan = res.data.data.userInfo.fan;
+      postrequest(`admin/query`, { studentId: studentId }).then((res) => {
+        console.log(res,'213');
+        
+        this.userInfo.studentId = res.data.data.studentId;
+        this.userInfo.nickname = res.data.data.nickname;
+        this.userInfo.avatar = res.data.data.avatar;
+        this.userInfo.sex = res.data.data.sex;
       });
     },
   },

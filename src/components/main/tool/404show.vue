@@ -300,7 +300,7 @@
 <script lang='ts' setup>
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
-import router from '../../../../router';
+import router from '../../../router';
 let goLogin=function(){
   router.replace('/')
 }

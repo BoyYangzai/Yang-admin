@@ -1,6 +1,7 @@
-import { patchrequest } from "../login/login";
-export function setAvatar(QQ: string) {
-    return patchrequest("user/info", {
-      "Avatar": `https://q1.qlogo.cn/g?b=qq&nk=${QQ}&s=100`,
+import { postrequest } from "../login/login";
+export function setAvatar(studentId:string,QQ: string) {
+    return postrequest("user/avatar", {
+      "studentId": studentId,
+      "qq": QQ
     });
 }

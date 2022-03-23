@@ -4,8 +4,9 @@ interface getBody {
   studentId: string;
 }
 interface postBody {
-  studentId: string;
-  password: string;
+  studentId?: string;
+  password?: string;
+  qq?: string;
 }
 interface patchBody {
   Nickname?: string;
@@ -20,11 +21,9 @@ export function getrequest(param: string) {
 export function postrequest(param: string, body: postBody) {
   return request.post(param, body);
 }
-
 export function patchrequest(param: string, body: patchBody) {
   return request.patch(param, body);
 }
-
 request.interceptors.request.use((config) => {
   if (window.localStorage.getItem("token") != "null") {
     config!.headers!.Authorization = `Bearer ${window.localStorage.getItem(
@@ -35,6 +34,8 @@ request.interceptors.request.use((config) => {
 });
 request.interceptors.response.use(
   (res) => {
+    console.log(res);
+    
     if (res.status == 200) {
       if (res.data.code == 200) {
         if (res.data.data?.token) {
@@ -46,14 +47,14 @@ request.interceptors.response.use(
         } else {
         }
         return res;
-      } else if (res.data.code == 1003) {
+      } else if (res.data.code == 1005) {
         ElMessage.closeAll();
         ElMessage.error({
           message: res.data.message,
           center: true,
         });
         return;
-      } else if (res.data.code == 1002) {
+      } else if (res.data.code == 1004) {
         ElMessage.closeAll();
         ElMessage({
           message: res.data.message,

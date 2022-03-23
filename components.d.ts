@@ -5,13 +5,13 @@
 declare module 'vue' {
   export interface GlobalComponents {
     404: typeof import('./src/components/404.vue')['default']
-    404show: typeof import('./src/components/main/tool/pages/404show.vue')['default']
+    404show: typeof import('./src/components/main/tool/404show.vue')['default']
     Avatar: typeof import('./src/components/head/Avatar.vue')['default']
     Class: typeof import('./src/components/main/Class.vue')['default']
     Core: typeof import('./src/components/Core.vue')['default']
     DropDown: typeof import('./src/components/head/DropDown.vue')['default']
-    Echarts: typeof import('./src/components/main/tool/pages/Echarts.vue')['default']
-    Editor: typeof import('./src/components/main/tool/pages/Editor.vue')['default']
+    Echarts: typeof import('./src/components/main/tool/Echarts.vue')['default']
+    Editor: typeof import('./src/components/main/tool/Editor.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -19,8 +19,6 @@ declare module 'vue' {
     ElCard: typeof import('element-plus/es')['ElCard']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
-    ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
-    ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
@@ -49,13 +47,16 @@ declare module 'vue' {
     Login: typeof import('./src/components/Login.vue')['default']
     Myself: typeof import('./src/components/main/Myself.vue')['default']
     Nav: typeof import('./src/components/slide/Nav.vue')['default']
-    Qrcode: typeof import('./src/components/main/tool/pages/Qrcode.vue')['default']
+    PersonCard: typeof import('./src/components/main/tool/PersonCard.vue')['default']
+    Qrcode: typeof import('./src/components/main/tool/Qrcode.vue')['default']
     Tags: typeof import('./src/components/main/Tags.vue')['default']
+    Test: typeof import('./src/components/test.vue')['default']
     Test1: typeof import('./src/components/main/test1.vue')['default']
     Test3: typeof import('./src/components/main/test3.vue')['default']
     Test4: typeof import('./src/components/main/test4.vue')['default']
     Test5: typeof import('./src/components/main/test5.vue')['default']
     Theme: typeof import('./src/components/common/Theme.vue')['default']
+    WaterMarker: typeof import('./src/components/main/tool/waterMarker.vue')['default']
   }
 }
 

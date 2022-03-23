@@ -9,7 +9,7 @@
           )
         "
         height="250"
-        style="width: 100vw; height: 85vh" 
+        style="width: 100vw; height: 85vh"
         lazy
         class="table"
         ref="table"
@@ -94,6 +94,7 @@ import axios from "axios";
 import { ElForm, ElMessage, ElMessageBox } from "element-plus";
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 import { computed, nextTick, onMounted, reactive, Ref, ref } from "vue";
+import { getrequest } from "../../network/login/login";
 let tableData: any = reactive([
   //   {
   //     studentId: "08213101",
@@ -1354,14 +1355,14 @@ const currentChange = function (newPage: number) {
   });
 };
 // 学生信息存储
-axios.post("http://124.222.107.29:5000/admin/getall").then((res) => {
-  tableData.push(...res.data);
+getrequest("https://yakui114514.xyz/admin/getall").then((res) => {
+  tableData.push(...res.data.data);
 });
 
 //搜索模块
 const search = ref("");
 const filterTableData = computed(() =>
-  tableData.filter( 
+  tableData.filter(
     (data: any) =>
       !search.value ||
       data.name.toLowerCase().includes(search.value.toLowerCase()) ||

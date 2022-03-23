@@ -142,7 +142,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/editor",
         name: "富文本编辑器",
-        component: () => import("../components/main/tool/pages/Editor.vue"),
+        component: () => import("../components/main/tool/Editor.vue"),
         meta: {
           icon: "fa fa-text-width",
         },
@@ -150,7 +150,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/404show",
         name: "404页面",
-        component: () => import("../components/main/tool/pages/404show.vue"),
+        component: () => import("../components/main/tool/404show.vue"),
         meta: {
           icon: "fa fa-exclamation-circle fa-lg",
         },
@@ -158,7 +158,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/echarts",
         name: "自定义图表",
-        component: () => import("../components/main/tool/pages/Echarts.vue"),
+        component: () => import("../components/main/tool/Echarts.vue"),
         meta: {
           icon: "fa fa-line-chart",
         },
@@ -166,9 +166,25 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/qrcode",
         name: "自定义二维码",
-        component: () => import("../components/main/tool/pages/Qrcode.vue"),
+        component: () => import("../components/main/tool/Qrcode.vue"),
         meta: {
           icon: "fa fa-qrcode fa-lg",
+        },
+      },
+      {
+        path: "/personCard",
+        name: "人物卡片",
+        component: () => import("../components/main/tool/PersonCard.vue"),
+        meta: {
+          icon: "fa fa-id-card ",
+        },
+      },
+      {
+        path: "/waterMarker",
+        name: "自定义水印",
+        component: () => import("../components/main/tool/waterMarker.vue"),
+        meta: {
+          icon: "fa fa-tags",
         },
       },
     ],
